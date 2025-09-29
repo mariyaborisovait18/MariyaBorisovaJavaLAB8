@@ -1,0 +1,403 @@
+<html>
+<head>
+<title>Main.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #54b33e;}
+.s4 { color: #33ccff; font-weight: bold;}
+.s5 { color: #7ec3e6;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Main.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Main {</span>
+    <span class="s0">public static void </span><span class="s1">main(String[] args) {</span>
+
+        <span class="s1">Scanner scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+        <span class="s1">GlobalVerification mistake = </span><span class="s0">new </span><span class="s1">GlobalVerification()</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s3">&quot;Добрый день! Какое задание Вы бы хотели рассмотреть?</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s0">int </span><span class="s1">choice = -</span><span class="s4">1</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s1">(choice != </span><span class="s4">0</span><span class="s1">) {</span>
+            <span class="s0">if </span><span class="s1">(choice == -</span><span class="s4">1</span><span class="s1">) {</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;МЕНЮ&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;№ Задания&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;1 - Создание личностей ФИО&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;2 - Создание личностей ФИО с ростом&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;3 - Создание человека с родителем.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;4 - Создание системы городов и маршрутов&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;5 - Создание имен с разными конструкторами&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;6 - Создание человека разными способами&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;7 - Создание Кота Барсика&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s3">&quot;0 - ВЫХОД&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">choice = scanner.nextInt()</span><span class="s2">;</span>
+            <span class="s1">}</span>
+            <span class="s0">switch </span><span class="s1">(choice) {</span>
+                <span class="s0">case </span><span class="s4">1</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;1 - Создание личностей&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Сколько личностей вы хотите создать?&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">int </span><span class="s1">numberOfPerson</span><span class="s2">;</span>
+                    <span class="s1">numberOfPerson = scanner.nextInt()</span><span class="s2">;</span>
+                    <span class="s1">numberOfPerson = mistake.numberNum(numberOfPerson)</span><span class="s2">;</span>
+                    <span class="s1">scanner.nextLine()</span><span class="s2">; </span><span class="s5">// очистка буфера после nextInt()</span>
+
+                    <span class="s1">Name[] persons = </span><span class="s0">new </span><span class="s1">Name[numberOfPerson]</span><span class="s2">;</span>
+
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; numberOfPerson</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Ввод данных для личности &quot; </span><span class="s1">+ (i + </span><span class="s4">1</span><span class="s1">))</span><span class="s2">;</span>
+                        <span class="s1">persons[i] = </span><span class="s0">new </span><span class="s1">Name()</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Созданные личности: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; persons.length</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Личность &quot; </span><span class="s1">+ (i + </span><span class="s4">1</span><span class="s1">) + </span><span class="s3">&quot;: &quot; </span><span class="s1">+ persons[i].toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">1</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s4">2</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;2 - Создание личностей ФИО с ростом&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Сколько личностей вы хотите создать?&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s0">int </span><span class="s1">numberOfPersonEx2</span><span class="s2">;</span>
+                    <span class="s1">numberOfPersonEx2 = scanner.nextInt()</span><span class="s2">;</span>
+                    <span class="s1">numberOfPersonEx2 = mistake.numberNum(numberOfPersonEx2)</span><span class="s2">;</span>
+
+                    <span class="s1">PeopleWithAge[] personsEx2 = </span><span class="s0">new </span><span class="s1">PeopleWithAge[numberOfPersonEx2]</span><span class="s2">;</span>
+
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; numberOfPersonEx2</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Данные личности &quot; </span><span class="s1">+ (i + </span><span class="s4">1</span><span class="s1">))</span><span class="s2">;</span>
+
+                        <span class="s5">// Вводим ФИО</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Введите Имя Фамилию Отчество&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">Name nameOfPerson = </span><span class="s0">new </span><span class="s1">Name()</span><span class="s2">;</span>
+
+                        <span class="s5">// Вводим рост</span>
+                        <span class="s1">System.out.print(</span><span class="s3">&quot;Введите рост: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s0">int </span><span class="s1">height</span><span class="s2">;</span>
+                        <span class="s1">height = scanner.nextInt()</span><span class="s2">;</span>
+                        <span class="s1">height = mistake.height(height)</span><span class="s2">;</span>
+
+                        <span class="s5">// Создаем объект People с ростом</span>
+                        <span class="s1">People peopleWithHeight = </span><span class="s0">new </span><span class="s1">People(height)</span><span class="s2">;</span>
+                        <span class="s1">personsEx2[i] = </span><span class="s0">new </span><span class="s1">PeopleWithAge(nameOfPerson</span><span class="s2">, </span><span class="s1">peopleWithHeight)</span><span class="s2">;</span>
+
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Личность : &quot; </span><span class="s1">+ personsEx2[i].toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Все личности &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; personsEx2.length</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">System.out.println((i + </span><span class="s4">1</span><span class="s1">) + </span><span class="s3">&quot;. &quot; </span><span class="s1">+ personsEx2[i].toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">2</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s4">3</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;3 - Создание человека с родителем&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">Scanner scannerCase3 = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+                    <span class="s5">// Массив для хранения людей</span>
+                    <span class="s1">PeopleWithAge[] peopleArray = </span><span class="s0">new </span><span class="s1">PeopleWithAge[</span><span class="s4">20</span><span class="s1">]</span><span class="s2">;</span>
+                    <span class="s0">int </span><span class="s1">peopleCount = </span><span class="s4">0</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Создаем людей и их отцов</span><span class="s0">\n</span><span class="s3">&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s5">// Создаем первого человека</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Создание первой личности&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Введите данные человека:&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">Name mainPersonName = </span><span class="s0">new </span><span class="s1">Name()</span><span class="s2">;</span>
+                    <span class="s1">PeopleWithAge mainPerson = </span><span class="s0">new </span><span class="s1">PeopleWithAge(mainPersonName)</span><span class="s2">;</span>
+                    <span class="s1">peopleArray[peopleCount] = mainPerson</span><span class="s2">;</span>
+                    <span class="s1">peopleCount++</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Человек создан: &quot; </span><span class="s1">+ mainPerson.toString())</span><span class="s2">;</span>
+
+                    <span class="s5">// Спрашиваем про отца</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Есть ли у этого человека отец? (да/нет): &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">String hasFather = scannerCase3.nextLine()</span><span class="s2">;</span>
+
+                    <span class="s0">boolean </span><span class="s1">fatherExists = </span><span class="s0">false</span><span class="s2">;</span>
+                    <span class="s0">if </span><span class="s1">(</span><span class="s3">&quot;да&quot;</span><span class="s1">.equals(hasFather))  {</span>
+                        <span class="s1">fatherExists = </span><span class="s0">true</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s0">if </span><span class="s1">(fatherExists) {</span>
+                        <span class="s5">// Создаем отца</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Создание отца&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Введите данные отца:&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">Name fatherName = </span><span class="s0">new </span><span class="s1">Name()</span><span class="s2">;</span>
+                        <span class="s1">PeopleWithAge father = </span><span class="s0">new </span><span class="s1">PeopleWithAge(fatherName)</span><span class="s2">;</span>
+                        <span class="s1">peopleArray[peopleCount] = father</span><span class="s2">;</span>
+                        <span class="s1">peopleCount = peopleCount + </span><span class="s4">1</span><span class="s2">;</span>
+
+                        <span class="s5">// Устанавливаем отца</span>
+                        <span class="s1">mainPerson.setFather(father)</span><span class="s2">;</span>
+
+                        <span class="s5">// Проверяем данные несколько раз, пока не будут правильными</span>
+                        <span class="s0">boolean </span><span class="s1">dataIsCorrect = </span><span class="s0">false</span><span class="s2">;</span>
+                        <span class="s0">while </span><span class="s1">(dataIsCorrect == </span><span class="s0">false</span><span class="s1">) {</span>
+                            <span class="s1">dataIsCorrect = mainPerson.checkDataWithFather(scannerCase3)</span><span class="s2">;</span>
+                        <span class="s1">}</span>
+
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Отец создан: &quot; </span><span class="s1">+ father.toString())</span><span class="s2">;</span>
+
+                        <span class="s5">// Спрашиваем про дедушку</span>
+                        <span class="s1">System.out.print(</span><span class="s3">&quot;Есть ли у отца отец? (да/нет): &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">String hasGrandfather = scannerCase3.nextLine()</span><span class="s2">;</span>
+
+                        <span class="s5">// Простая проверка ответа про дедушку</span>
+                        <span class="s0">boolean </span><span class="s1">grandfatherExists = </span><span class="s0">false</span><span class="s2">;</span>
+                        <span class="s0">if </span><span class="s1">(</span><span class="s3">&quot;да&quot;</span><span class="s1">.equals(hasGrandfather)) {</span>
+                            <span class="s1">grandfatherExists = </span><span class="s0">true</span><span class="s2">;</span>
+                        <span class="s1">}</span>
+
+                        <span class="s0">if </span><span class="s1">(grandfatherExists) {</span>
+                            <span class="s5">// Создаем дедушку</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Создаем дедушку&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Введите данные дедушки:&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">Name grandfatherName = </span><span class="s0">new </span><span class="s1">Name()</span><span class="s2">;</span>
+                            <span class="s1">PeopleWithAge grandfather = </span><span class="s0">new </span><span class="s1">PeopleWithAge(grandfatherName)</span><span class="s2">;</span>
+                            <span class="s1">peopleArray[peopleCount] = grandfather</span><span class="s2">;</span>
+                            <span class="s1">peopleCount = peopleCount + </span><span class="s4">1</span><span class="s2">;</span>
+
+                            <span class="s5">// Устанавливаем дедушку</span>
+                            <span class="s1">father.setFather(grandfather)</span><span class="s2">;</span>
+
+                            <span class="s5">// Проверяем данные дедушки несколько раз, пока не будут правильными</span>
+                            <span class="s0">boolean </span><span class="s1">grandfatherDataIsCorrect = </span><span class="s0">false</span><span class="s2">;</span>
+                            <span class="s0">while </span><span class="s1">(grandfatherDataIsCorrect == </span><span class="s0">false</span><span class="s1">) {</span>
+                                <span class="s1">grandfatherDataIsCorrect = father.checkDataWithFather(scannerCase3)</span><span class="s2">;</span>
+                            <span class="s1">}</span>
+
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Дедушка создан: &quot; </span><span class="s1">+ grandfather.toString())</span><span class="s2">;</span>
+                        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Дедушка не указан&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">}</span>
+                    <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Отец не указан&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s5">// Выводим всех созданных людей</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Созданные личности&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; peopleCount</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">System.out.println((i + </span><span class="s4">1</span><span class="s1">) + </span><span class="s3">&quot;. &quot; </span><span class="s1">+ peopleArray[i].toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">3</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s4">4</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;4 - Система городов и маршрутов&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">Scanner scannerCase4 = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+                    <span class="s5">// Создаем все города</span>
+                    <span class="s1">City cityA = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;A&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City cityB = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;B&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City cityC = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;C&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City cityD = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;D&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City cityE = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;E&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City cityF = </span><span class="s0">new </span><span class="s1">City(</span><span class="s3">&quot;F&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Создано 6 городов: A, B, C, D, E, F&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Маршруты</span>
+                    <span class="s5">// Из города A</span>
+                    <span class="s1">cityA.addRoute(cityF</span><span class="s2">, </span><span class="s4">1</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityA.addRoute(cityD</span><span class="s2">, </span><span class="s4">6</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityA.addRoute(cityB</span><span class="s2">, </span><span class="s4">5</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Из города B</span>
+                    <span class="s1">cityB.addRoute(cityA</span><span class="s2">, </span><span class="s4">5</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityB.addRoute(cityC</span><span class="s2">, </span><span class="s4">3</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Из города C</span>
+                    <span class="s1">cityC.addRoute(cityB</span><span class="s2">, </span><span class="s4">3</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityC.addRoute(cityD</span><span class="s2">, </span><span class="s4">4</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Из города D</span>
+                    <span class="s1">cityD.addRoute(cityC</span><span class="s2">, </span><span class="s4">4</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityD.addRoute(cityE</span><span class="s2">, </span><span class="s4">2</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityD.addRoute(cityA</span><span class="s2">, </span><span class="s4">6</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Из города E</span>
+                    <span class="s1">cityE.addRoute(cityF</span><span class="s2">, </span><span class="s4">2</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s5">// Из города F</span>
+                    <span class="s1">cityF.addRoute(cityE</span><span class="s2">, </span><span class="s4">2</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">cityF.addRoute(cityB</span><span class="s2">, </span><span class="s4">1</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s5">// Выводим информацию о всех городах используя toString()</span>
+                    <span class="s1">System.out.println(cityA.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(cityB.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(cityC.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(cityD.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(cityE.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(cityF.toString())</span><span class="s2">;</span>
+
+                    <span class="s5">// Интерактивная часть - поиск маршрутов из конкретного города</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Маршрут из конкретного города&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.print(</span><span class="s3">&quot;Введите название города (A-F) для поиска маршрутов: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">String searchCity = scannerCase4.nextLine()</span><span class="s2">;</span>
+
+                    <span class="s1">City selectedCity = </span><span class="s0">null</span><span class="s2">;</span>
+                    <span class="s0">switch </span><span class="s1">(searchCity) {</span>
+                        <span class="s0">case </span><span class="s3">&quot;A&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityA</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;B&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityB</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;C&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityC</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;D&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityD</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;E&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityE</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;F&quot;</span><span class="s1">:</span>
+                            <span class="s1">selectedCity = cityF</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">default</span><span class="s1">:</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Город не найден&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s0">if </span><span class="s1">(selectedCity != </span><span class="s0">null</span><span class="s1">) {</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot; Маршруты из города &quot; </span><span class="s1">+ selectedCity.getName() + </span><span class="s3">&quot;:&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s0">int </span><span class="s1">routeCount = selectedCity.getRouteCount()</span><span class="s2">;</span>
+
+                        <span class="s0">if </span><span class="s1">(routeCount == </span><span class="s4">0</span><span class="s1">) {</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Доступных маршрутов нет&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                            <span class="s0">int </span><span class="s1">totalCost = </span><span class="s4">0</span><span class="s2">;</span>
+                            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; routeCount</span><span class="s2">; </span><span class="s1">i++) {</span>
+                                <span class="s1">City destination = selectedCity.getConnectedCity(i)</span><span class="s2">;</span>
+                                <span class="s0">int </span><span class="s1">cost = selectedCity.getCost(i)</span><span class="s2">;</span>
+                                <span class="s1">System.out.println(</span><span class="s3">&quot;  -&gt; &quot; </span><span class="s1">+ destination.getName() + </span><span class="s3">&quot; (стоимость: &quot; </span><span class="s1">+ cost + </span><span class="s3">&quot;)&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                                <span class="s1">totalCost += cost</span><span class="s2">;</span>
+                            <span class="s1">}</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;  Общая стоимость всех маршрутов: &quot; </span><span class="s1">+ totalCost)</span><span class="s2">;</span>
+                        <span class="s1">}</span>
+                    <span class="s1">}</span>
+
+                    <span class="s5">// Дополнительно: показываем все связи между городами</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Связи между городами&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">City[] allCities = {cityA</span><span class="s2">, </span><span class="s1">cityB</span><span class="s2">, </span><span class="s1">cityC</span><span class="s2">, </span><span class="s1">cityD</span><span class="s2">, </span><span class="s1">cityE</span><span class="s2">, </span><span class="s1">cityF}</span><span class="s2">;</span>
+
+                    <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; allCities.length</span><span class="s2">; </span><span class="s1">i++) {</span>
+                        <span class="s1">City city = allCities[i]</span><span class="s2">;</span>
+                        <span class="s1">System.out.println(city.toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">4</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s4">5</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;5 - Создание имен с разными конструкторами&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">Scanner scannerCase5 = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Выберите тип ввода:&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;1 - Имя&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;2 - Имя и фамилия&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;3 - Имя, фамилия и отчество&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.print(</span><span class="s3">&quot;Ваш выбор: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">String choiceText = scannerCase5.nextLine()</span><span class="s2">;</span>
+
+                    <span class="s1">Name newName = </span><span class="s0">null</span><span class="s2">;</span>
+
+                    <span class="s0">switch </span><span class="s1">(choiceText) {</span>
+                        <span class="s0">case </span><span class="s3">&quot;1&quot;</span><span class="s1">:</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите имя: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String name = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">newName = </span><span class="s0">new </span><span class="s1">Name(name)</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;2&quot;</span><span class="s1">:</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите имя: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String name2 = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите фамилию: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String surname = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">newName = </span><span class="s0">new </span><span class="s1">Name(name2</span><span class="s2">, </span><span class="s1">surname)</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">case </span><span class="s3">&quot;3&quot;</span><span class="s1">:</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите имя: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String name3 = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите фамилию: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String surname3 = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">System.out.print(</span><span class="s3">&quot;Введите отчество: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s1">String middleName = scannerCase5.nextLine()</span><span class="s2">;</span>
+                            <span class="s1">newName = </span><span class="s0">new </span><span class="s1">Name(name3</span><span class="s2">, </span><span class="s1">surname3</span><span class="s2">, </span><span class="s1">middleName)</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                        <span class="s0">default</span><span class="s1">:</span>
+                            <span class="s1">System.out.println(</span><span class="s3">&quot;Некорректный выбор!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                            <span class="s0">break</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s0">if </span><span class="s1">(newName != </span><span class="s0">null</span><span class="s1">) {</span>
+                        <span class="s1">System.out.println(</span><span class="s3">&quot;Создано: &quot; </span><span class="s1">+ newName.toString())</span><span class="s2">;</span>
+                    <span class="s1">}</span>
+
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">5</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+                <span class="s0">case </span><span class="s4">6</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;6 - Создание человека разными способами&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">Scanner scannerCase6 = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Создание личностей&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s5">// 1. Человека с именем Лев (в виде строки) и ростом 170</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;1. Создание личности Льва&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">PeopleWithAge lev = </span><span class="s0">new </span><span class="s1">PeopleWithAge(</span><span class="s3">&quot;Лев&quot;</span><span class="s2">, </span><span class="s4">170</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Личность : &quot; </span><span class="s1">+ lev.toString())</span><span class="s2">;</span>
+
+                    <span class="s5">// 2. Человека с именем Пушкин Сергей (как Имя), ростом 168 и отцом Львом</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;2. Создание Сергея Пушкина&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">Name sergeyName = </span><span class="s0">new </span><span class="s1">Name(</span><span class="s3">&quot;Сергей&quot;</span><span class="s2">, </span><span class="s3">&quot;Пушкин&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">PeopleWithAge sergey = </span><span class="s0">new </span><span class="s1">PeopleWithAge(sergeyName</span><span class="s2">, </span><span class="s4">168</span><span class="s2">, </span><span class="s1">lev)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Личность: &quot; </span><span class="s1">+ sergey.toString())</span><span class="s2">;</span>
+
+                    <span class="s5">// 3. Человека с именем Александр (в виде строки), ростом 167 и отцом Сергеем</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;3. Создание Александра&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">PeopleWithAge alexander = </span><span class="s0">new </span><span class="s1">PeopleWithAge(</span><span class="s3">&quot;Александр&quot;</span><span class="s2">, </span><span class="s4">167</span><span class="s2">, </span><span class="s1">sergey)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Создан: &quot; </span><span class="s1">+ alexander.toString())</span><span class="s2">;</span>
+
+                    <span class="s5">// Вывод всех созданных людей</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Результаты&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;1. &quot; </span><span class="s1">+ lev.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;2. &quot; </span><span class="s1">+ sergey.toString())</span><span class="s2">;</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;3. &quot; </span><span class="s1">+ alexander.toString())</span><span class="s2">;</span>
+
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">6</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">case </span><span class="s4">7</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Кот Барсик&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+                    <span class="s1">Scanner scannerCase7 = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Введите имя кота: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">String catName = scannerCase7.nextLine()</span><span class="s2">;</span>
+
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Сколько раз мяукнуть? &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">int </span><span class="s1">meowCount = scannerCase7.nextInt()</span><span class="s2">;</span>
+                    <span class="s1">scannerCase7.nextLine()</span><span class="s2">; </span><span class="s5">// очистка</span>
+
+                    <span class="s1">Cat cat = </span><span class="s0">new </span><span class="s1">Cat(catName)</span><span class="s2">;</span>
+                    <span class="s1">System.out.print(cat)</span><span class="s2">;</span>
+                    <span class="s1">cat.meow()</span><span class="s2">;</span>
+                    <span class="s1">cat.meow(meowCount)</span><span class="s2">;</span>
+
+                    <span class="s1">choice = mistake.meni(</span><span class="s4">7</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+                <span class="s0">default</span><span class="s1">:</span>
+                    <span class="s1">System.out.println(</span><span class="s3">&quot;Некорректный выбор. Попробуйте снова.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s0">break</span><span class="s2">;</span>
+
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

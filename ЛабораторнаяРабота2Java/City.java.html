@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>City.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #7ec3e6;}
+.s4 { color: #33ccff; font-weight: bold;}
+.s5 { color: #499936; font-style: italic;}
+.s6 { color: #499936; font-weight: bold; font-style: italic;}
+.s7 { color: #54b33e;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+City.java</font>
+</center></td></tr></table>
+<pre><span class="s0">public class </span><span class="s1">City {</span>
+    <span class="s0">private </span><span class="s1">String name</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">City[] connectedCities</span><span class="s2">;</span>
+    <span class="s0">private int</span><span class="s1">[] costs</span><span class="s2">;</span>
+    <span class="s0">private int </span><span class="s1">routeCount</span><span class="s2">;</span>
+
+    <span class="s3">// Конструктор задания 3</span>
+    <span class="s0">public </span><span class="s1">City(String name) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.connectedCities = </span><span class="s0">new </span><span class="s1">City[</span><span class="s4">10</span><span class="s1">]</span><span class="s2">; </span><span class="s3">// массив на 10 городов</span>
+        <span class="s0">this</span><span class="s1">.costs = </span><span class="s0">new int</span><span class="s1">[</span><span class="s4">10</span><span class="s1">]</span><span class="s2">; </span><span class="s3">// массив на 10 стоимостей</span>
+        <span class="s0">this</span><span class="s1">.routeCount = </span><span class="s4">0</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Свойства</span>
+    <span class="s3">// Получение названия города</span>
+    <span class="s0">public </span><span class="s1">String getName() {</span>
+        <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Получение количества маршрутов</span>
+    <span class="s0">public int </span><span class="s1">getRouteCount() {</span>
+        <span class="s0">return </span><span class="s1">routeCount</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Получение города по индексу</span>
+    <span class="s0">public </span><span class="s1">City getConnectedCity(</span><span class="s0">int </span><span class="s1">index) {</span>
+        <span class="s0">return </span><span class="s1">connectedCities[index]</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Получение стоимости по индексу</span>
+    <span class="s0">public int </span><span class="s1">getCost(</span><span class="s0">int </span><span class="s1">index) {</span>
+        <span class="s0">return </span><span class="s1">costs[index]</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">* Метод добавляет новый маршрут из текущего города в другой город с указанной стоимостью.</span>
+     <span class="s5">* </span><span class="s6">@param </span><span class="s5">city город назначения</span>
+     <span class="s5">* </span><span class="s6">@param </span><span class="s5">cost стоимость проезда</span>
+     <span class="s5">* </span><span class="s6">@return </span><span class="s5">Пример:Город 'A' - (F: 1)</span>
+     <span class="s5">* */</span>
+    <span class="s0">public void </span><span class="s1">addRoute(City city</span><span class="s2">, </span><span class="s0">int </span><span class="s1">cost) {</span>
+        <span class="s0">if </span><span class="s1">(routeCount &lt; </span><span class="s4">10</span><span class="s1">) {</span>
+            <span class="s1">connectedCities[routeCount] = city</span><span class="s2">;</span>
+            <span class="s1">costs[routeCount] = cost</span><span class="s2">;</span>
+            <span class="s1">routeCount++</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">System.out.println(</span><span class="s7">&quot;Нельзя добавить больше маршрутов!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s5">/**</span>
+     <span class="s5">* Метод формирует текстовое представление города и маршрутов со стоимостью в другие города</span>
+     <span class="s5">* </span><span class="s6">@return </span><span class="s5">Пример:Город 'A' - (F: 1, D: 6, B: 5)</span>
+     <span class="s5">* */</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        <span class="s1">String result = </span><span class="s7">&quot;Город '&quot; </span><span class="s1">+ name + </span><span class="s7">&quot;'&quot;</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s1">(routeCount == </span><span class="s4">0</span><span class="s1">) {</span>
+            <span class="s1">result += </span><span class="s7">&quot; - нет маршрутов в другие города&quot;</span><span class="s2">;</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s1">result += </span><span class="s7">&quot; - (&quot;</span><span class="s2">;</span>
+            <span class="s0">for </span><span class="s1">(</span><span class="s0">int </span><span class="s1">i = </span><span class="s4">0</span><span class="s2">; </span><span class="s1">i &lt; routeCount</span><span class="s2">; </span><span class="s1">i++) {</span>
+                <span class="s0">if </span><span class="s1">(i &gt; </span><span class="s4">0</span><span class="s1">) {</span>
+                    <span class="s1">result += </span><span class="s7">&quot;, &quot;</span><span class="s2">;</span>
+                <span class="s1">}</span>
+                <span class="s1">result += connectedCities[i].getName() + </span><span class="s7">&quot;: &quot; </span><span class="s1">+ costs[i]</span><span class="s2">;</span>
+            <span class="s1">}</span>
+            <span class="s1">result += </span><span class="s7">&quot;)&quot;</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">result</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

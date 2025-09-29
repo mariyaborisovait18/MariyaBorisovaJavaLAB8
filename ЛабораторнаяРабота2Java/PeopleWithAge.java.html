@@ -1,0 +1,282 @@
+<html>
+<head>
+<title>PeopleWithAge.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #7ec3e6;}
+.s4 { color: #499936; font-style: italic;}
+.s5 { color: #499936; font-weight: bold; font-style: italic;}
+.s6 { color: #33ccff; font-weight: bold;}
+.s7 { color: #54b33e;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+PeopleWithAge.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">PeopleWithAge {</span>
+
+    <span class="s0">private </span><span class="s1">Name name</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">People people</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">PeopleWithAge father</span><span class="s2">;</span>
+
+    <span class="s3">// Конструктор для задания 2.2</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(Name name</span><span class="s2">, </span><span class="s1">People people) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.people = people</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.father = </span><span class="s0">null</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Конструктор для задания 2.3</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(Name name) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.people = </span><span class="s0">new </span><span class="s1">People(</span><span class="s0">true</span><span class="s1">)</span><span class="s2">;  </span><span class="s3">// создаем без проверки роста</span>
+        <span class="s0">this</span><span class="s1">.father = </span><span class="s0">null</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Конструкторы для задания 4.6</span>
+    <span class="s0">private </span><span class="s1">PeopleWithAge(Name name</span><span class="s2">, </span><span class="s1">People people</span><span class="s2">, </span><span class="s1">PeopleWithAge father) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.people = people</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.father = father</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// 1) Имя (строка) и рост</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(String name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">height) {</span>
+        <span class="s0">this</span><span class="s1">(</span><span class="s0">new </span><span class="s1">Name(name)</span><span class="s2">, </span><span class="s0">new </span><span class="s1">People(height)</span><span class="s2">, </span><span class="s0">null</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// 2) Имя (строка), рост и отец</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(String name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">height</span><span class="s2">, </span><span class="s1">PeopleWithAge father) {</span>
+        <span class="s0">this</span><span class="s1">(</span><span class="s0">new </span><span class="s1">Name(name)</span><span class="s2">, </span><span class="s0">new </span><span class="s1">People(height)</span><span class="s2">, </span><span class="s1">father)</span><span class="s2">;</span>
+        <span class="s1">adjustNameFromFather()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// 3) Имя (объект Name) и рост</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(Name name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">height) {</span>
+        <span class="s0">this</span><span class="s1">(name</span><span class="s2">, </span><span class="s0">new </span><span class="s1">People(height)</span><span class="s2">, </span><span class="s0">null</span><span class="s1">)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// 4) Имя (объект Name), рост и отец</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge(Name name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">height</span><span class="s2">, </span><span class="s1">PeopleWithAge father) {</span>
+        <span class="s0">this</span><span class="s1">(name</span><span class="s2">, </span><span class="s0">new </span><span class="s1">People(height)</span><span class="s2">, </span><span class="s1">father)</span><span class="s2">;</span>
+        <span class="s1">checkAndCompleteNameFromFather()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+
+    <span class="s3">// Свойства - без деления по конструкторам</span>
+    <span class="s0">public </span><span class="s1">PeopleWithAge getFather() {</span>
+        <span class="s0">return </span><span class="s1">father</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">Name getName() {</span>
+        <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">People getPeople() {</span>
+        <span class="s0">return </span><span class="s1">people</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">private void </span><span class="s1">setSurname(String surname) {</span>
+        <span class="s1">name.setSurname(surname)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">private void </span><span class="s1">setMiddleName(String middleName) {</span>
+        <span class="s1">name.setMiddleName(middleName)</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Метод задания 2 и 4</span>
+
+    <span class="s4">/**</span>
+     <span class="s4">* Метод устанавливает отца для текущего объекта PeopleWithAge и выполняет различные проверки в зависимости от состояния объекта.</span>
+     <span class="s4">* </span><span class="s5">@param </span><span class="s4">father типа PeopleWithAge - данные &quot;отец&quot;)</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">Если у текущего объекта есть имя (this.name != null) - вызывает checkAndCompleteNameFromFather(), Если имени нет - вызывает adjustNameFromFather(), Если рост не установлен (рост = 0):</span>
+     <span class="s4">* вызывает checkFatherData()</span>
+     <span class="s4">* */</span>
+    <span class="s0">public void </span><span class="s1">setFather(PeopleWithAge father) {</span>
+        <span class="s0">this</span><span class="s1">.father = father</span><span class="s2">;</span>
+        <span class="s0">if </span><span class="s1">(people.getHeight() != </span><span class="s6">0</span><span class="s1">) {</span>
+            <span class="s3">// Если это Case 6 (есть рост), применяем Case 6</span>
+            <span class="s0">if </span><span class="s1">(</span><span class="s0">this</span><span class="s1">.name != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s1">checkAndCompleteNameFromFather()</span><span class="s2">;</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">adjustNameFromFather()</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+            <span class="s3">// Если это Case 3 (нет роста)</span>
+            <span class="s1">checkFatherData()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s3">// Метод задания 2.3</span>
+    <span class="s4">/**</span>
+     <span class="s4">* Метод автоматически формирует ФИО текущего объекта на основе имени отца.</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">Наследует фамилию отца: отец Фролов - сын Фролов, Создает отчество от имени отца: отец Иван, сын Иванович</span>
+     <span class="s4">* */</span>
+    <span class="s0">private void </span><span class="s1">adjustNameFromFather() {</span>
+        <span class="s0">if </span><span class="s1">(father != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">Name fatherName = father.getName()</span><span class="s2">;</span>
+
+            <span class="s3">// Всегда присваиваем фамилию отца</span>
+            <span class="s0">if </span><span class="s1">(fatherName.getSurname() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !fatherName.getSurname().isEmpty()) {</span>
+                <span class="s1">setSurname(fatherName.getSurname())</span><span class="s2">;</span>
+            <span class="s1">}</span>
+
+            <span class="s3">// Всегда создаем отчество от имени отца</span>
+            <span class="s0">if </span><span class="s1">(fatherName.getName() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !fatherName.getName().isEmpty()) {</span>
+                <span class="s1">setMiddleName(fatherName.getName() + </span><span class="s7">&quot;ович&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Метод задания 4</span>
+    <span class="s4">/**</span>
+     <span class="s4">* Метод проверяет и дополняет ФИО текущего объекта на основе данных отца, с интерактивным вводом при недостающих данных. 1) Проверяет наличие отца</span>
+     <span class="s4">* 2) Логика для фамилии: Если у текущего объекта нет фамилии:</span>
+     <span class="s4">* Берет фамилию отца, если она есть</span>
+     <span class="s4">* Если у отца нет фамилии - запрашивает ввод у пользователя:</span>
+     <span class="s4">* 3) Логика для отчества: Если у текущего объекта нет отчества:</span>
+     <span class="s4">* Формирует отчество от имени отца (имя + &quot;ович&quot;)</span>
+     <span class="s4">* Если у отца нет имени - запрашивает ввод у пользователя:</span>
+     <span class="s4">* </span><span class="s5">@return</span>
+     <span class="s4">* Пример вывода:</span>
+     <span class="s4">* У отца полное ФИО: Автоматически наследует фамилию и формирует отчество (отец: Иван Иванов Иванович, сын Иванов Дмитрий Иванович)</span>
+     <span class="s4">* У отца нет фамилии: Запрашивает фамилию у пользователя (отец: Иван Иванович - (запрос) фамилия Иванов)</span>
+     <span class="s4">* У отца нет имени: Запрашивает отчество у пользователя (отец: Иванов Иванович - (запрос) имя Иван)</span>
+     <span class="s4">* */</span>
+    <span class="s0">private void </span><span class="s1">checkAndCompleteNameFromFather() {</span>
+        <span class="s0">if </span><span class="s1">(father != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s1">Scanner scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+            <span class="s1">Name fatherName = father.getName()</span><span class="s2">;</span>
+
+            <span class="s3">// Проверяем и заполняем фамилию</span>
+            <span class="s0">if </span><span class="s1">(name.getSurname() == </span><span class="s0">null </span><span class="s1">|| name.getSurname().isEmpty()) {</span>
+                <span class="s0">if </span><span class="s1">(fatherName.getSurname() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !fatherName.getSurname().isEmpty()) {</span>
+                    <span class="s1">setSurname(fatherName.getSurname())</span><span class="s2">;</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">System.out.print(</span><span class="s7">&quot;У отца нет фамилии. Введите фамилию: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">String surname = scanner.nextLine()</span><span class="s2">;</span>
+                    <span class="s1">setSurname(surname)</span><span class="s2">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+
+            <span class="s3">// Проверяем и заполняем отчество</span>
+            <span class="s0">if </span><span class="s1">(name.getMiddleName() == </span><span class="s0">null </span><span class="s1">|| name.getMiddleName().isEmpty()) {</span>
+                <span class="s0">if </span><span class="s1">(fatherName.getName() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !fatherName.getName().isEmpty()) {</span>
+                    <span class="s1">setMiddleName(fatherName.getName() + </span><span class="s7">&quot;ович&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                    <span class="s1">System.out.print(</span><span class="s7">&quot;Не удалось определить отчество от имени отца. Введите отчество: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                    <span class="s1">String middleName = scanner.nextLine()</span><span class="s2">;</span>
+                    <span class="s1">setMiddleName(middleName)</span><span class="s2">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s4">/**</span>
+     <span class="s4">* Метод проверяет и автоматически дополняет фамилию и отчество текущего объекта на основе данных отца при определённых условиях</span>
+     <span class="s4">* Заполняет фамилию ТОЛЬКО если:</span>
+     <span class="s4">* у текущего объекта нет фамилии,</span>
+     <span class="s4">* и у отца есть фамилия.</span>
+     <span class="s4">* Формирует отчество ТОЛЬКО если:</span>
+     <span class="s4">* У текущего объекта нет отчества,</span>
+     <span class="s4">* и у отца есть имя.</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">Примеры:</span>
+     <span class="s4">* Если нет фамилии, а у отца есть &quot;Иванов&quot;  - устанавливает &quot;Иванов&quot;</span>
+     <span class="s4">* Если нет отчества, а у отца имя &quot;Петр&quot; - устанавливает &quot;Петрович&quot;</span>
+     <span class="s4">* Если фамилия уже есть &quot;Сидоров&quot; - не меняет её, даже если у отца &quot;Иванов&quot;</span>
+     <span class="s4">* Если у отца нет фамилии -  не устанавливает фамилию</span>
+     <span class="s4">* */</span>
+    <span class="s0">private void </span><span class="s1">checkFatherData() {</span>
+        <span class="s0">if </span><span class="s1">(father != </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s3">// Если у человека нет фамилии, а у отца есть</span>
+            <span class="s0">if </span><span class="s1">(name.getSurname() == </span><span class="s0">null </span><span class="s1">|| name.getSurname().isEmpty()) {</span>
+                <span class="s0">if </span><span class="s1">(father.name.getSurname() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !father.name.getSurname().isEmpty()) {</span>
+                    <span class="s1">setSurname(father.name.getSurname())</span><span class="s2">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+
+            <span class="s3">// Если у человека нет отчества, а у отца есть имя</span>
+            <span class="s0">if </span><span class="s1">(name.getMiddleName() == </span><span class="s0">null </span><span class="s1">|| name.getMiddleName().isEmpty()) {</span>
+                <span class="s0">if </span><span class="s1">(father.name.getName() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !father.name.getName().isEmpty()) {</span>
+                    <span class="s1">setMiddleName(father.name.getName() + </span><span class="s7">&quot;ович&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">}</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+    <span class="s3">//Метод для задания 2 и 5 (Case 3 и Case 6)</span>
+    <span class="s4">/**</span>
+     <span class="s4">* Метод формирует текстовое представление объекта в двух разных форматах в зависимости от наличия роста.</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">Пример: 1) &quot;Иван Иванов, рост: 180&quot;, Пример: 2) &quot;Петр Иванов (отец: Иван Иванов)&quot;,</span>
+     <span class="s4">* если отца нет: просто &quot;Имя&quot;</span>
+     <span class="s4">* пример: &quot;Петр Иванов&quot;.</span>
+     <span class="s4">* */</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        <span class="s3">// Для Case 6 (есть рост) - формат &quot;Имя, рост&quot;</span>
+        <span class="s0">if </span><span class="s1">(people.getHeight() != </span><span class="s6">0</span><span class="s1">) {</span>
+            <span class="s0">return </span><span class="s1">name.toString() + </span><span class="s7">&quot;, &quot; </span><span class="s1">+ people.toString()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s3">// Для Case 3 (нет роста) - старый формат с информацией об отце</span>
+        <span class="s0">else </span><span class="s1">{</span>
+            <span class="s0">if </span><span class="s1">(father != </span><span class="s0">null</span><span class="s1">) {</span>
+                <span class="s0">return </span><span class="s1">name.toString() + </span><span class="s7">&quot; (отец: &quot; </span><span class="s1">+ father.name.toString() + </span><span class="s7">&quot;)&quot;</span><span class="s2">;</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s0">return </span><span class="s1">name.toString()</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Метод для задания 2.3</span>
+    <span class="s4">/**</span>
+     <span class="s4">* Метод проверяет, соответствуют ли фамилия и отчество человека данным его отца, и при необходимости исправляет их через ввод пользователя.</span>
+     <span class="s4">* </span><span class="s5">@param </span><span class="s4">scanner ввод пользователя при необходимости</span>
+     <span class="s4">* </span><span class="s5">@return </span><span class="s4">Примеры: Ошибка: Фамилия должна совпадать с фамилией отца!</span>
+     <span class="s4">* Ваша фамилия: Сидоров.</span>
+     <span class="s4">* Фамилия отца: Иванов.</span>
+     <span class="s4">* Введите правильную фамилию: Иванов.</span>
+     <span class="s4">* Ошибка: Отчество должно быть образовано от имени отца!</span>
+     <span class="s4">* Ваше отчество: Сергеевич.</span>
+     <span class="s4">* Должно быть: Петрович.</span>
+     <span class="s4">* Введите правильное отчество: Петрович.</span>
+     <span class="s4">* */</span>
+    <span class="s0">public boolean </span><span class="s1">checkDataWithFather(Scanner scanner) {</span>
+        <span class="s0">if </span><span class="s1">(father == </span><span class="s0">null</span><span class="s1">) {</span>
+            <span class="s0">return true</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">boolean </span><span class="s1">isValid = </span><span class="s0">true</span><span class="s2">;</span>
+
+        <span class="s3">// Проверяем фамилию</span>
+        <span class="s0">if </span><span class="s1">(name.getSurname() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !name.getSurname().isEmpty() &amp;&amp;</span>
+                <span class="s1">father.name.getSurname() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !father.name.getSurname().isEmpty() &amp;&amp;</span>
+                <span class="s1">!name.getSurname().equals(father.name.getSurname())) {</span>
+            <span class="s1">System.out.println(</span><span class="s7">&quot;Ошибка: Фамилия должна совпадать с фамилией отца!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s7">&quot;Ваша фамилия: &quot; </span><span class="s1">+ name.getSurname())</span><span class="s2">;</span>
+            <span class="s1">System.out.println(</span><span class="s7">&quot;Фамилия отца: &quot; </span><span class="s1">+ father.name.getSurname())</span><span class="s2">;</span>
+            <span class="s1">System.out.print(</span><span class="s7">&quot;Введите правильную фамилию: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">String newSurname = scanner.nextLine()</span><span class="s2">;</span>
+            <span class="s1">setSurname(newSurname)</span><span class="s2">;</span>
+            <span class="s1">isValid = </span><span class="s0">false</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s3">// Проверяем отчество</span>
+        <span class="s0">if </span><span class="s1">(name.getMiddleName() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !name.getMiddleName().isEmpty() &amp;&amp;</span>
+                <span class="s1">father.name.getName() != </span><span class="s0">null </span><span class="s1">&amp;&amp; !father.name.getName().isEmpty()) {</span>
+            <span class="s1">String expectedMiddleName = father.name.getName() + </span><span class="s7">&quot;ович&quot;</span><span class="s2">;</span>
+            <span class="s0">if </span><span class="s1">(!name.getMiddleName().equals(expectedMiddleName)) {</span>
+                <span class="s1">System.out.println(</span><span class="s7">&quot;Ошибка: Отчество должно быть образовано от имени отца!&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s7">&quot;Ваше отчество: &quot; </span><span class="s1">+ name.getMiddleName())</span><span class="s2">;</span>
+                <span class="s1">System.out.println(</span><span class="s7">&quot;Должно быть: &quot; </span><span class="s1">+ expectedMiddleName)</span><span class="s2">;</span>
+                <span class="s1">System.out.print(</span><span class="s7">&quot;Введите правильное отчество: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s1">String newMiddleName = scanner.nextLine()</span><span class="s2">;</span>
+                <span class="s1">setMiddleName(newMiddleName)</span><span class="s2">;</span>
+                <span class="s1">isValid = </span><span class="s0">false</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">isValid</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>

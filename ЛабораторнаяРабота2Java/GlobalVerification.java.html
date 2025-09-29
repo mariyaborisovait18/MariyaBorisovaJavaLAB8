@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>GlobalVerification.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #499936; font-style: italic;}
+.s4 { color: #499936; font-weight: bold; font-style: italic;}
+.s5 { color: #54b33e;}
+.s6 { color: #33ccff; font-weight: bold;}
+.s7 { color: #7ec3e6;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+GlobalVerification.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+<span class="s0">public class </span><span class="s1">GlobalVerification {</span>
+    <span class="s1">Scanner scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Метод формирует подменю основного меню</span>
+     <span class="s3">* </span><span class="s4">@param </span><span class="s3">number  вариант меню, который ведёт к определённому действию</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">Пример: 1 - вывод основного МЕНЮ</span>
+     <span class="s3">* */</span>
+    <span class="s0">public int </span><span class="s1">meni(</span><span class="s0">int </span><span class="s1">number) {</span>
+        <span class="s1">System.out.println(</span><span class="s5">&quot;Выберите действие&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s5">&quot;1 - МЕНЮ&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s5">&quot;2 - повторить задание&quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s1">System.out.println(</span><span class="s5">&quot;0 - ВЫХОД&quot;</span><span class="s1">)</span><span class="s2">;</span>
+
+        <span class="s0">int </span><span class="s1">choice = scanner.nextInt()</span><span class="s2">;</span>
+        <span class="s0">switch </span><span class="s1">(choice) {</span>
+            <span class="s0">case </span><span class="s6">1</span><span class="s1">:</span>
+                <span class="s0">return </span><span class="s1">-</span><span class="s6">1</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s6">2</span><span class="s1">:</span>
+                <span class="s0">return </span><span class="s1">number</span><span class="s2">;</span>
+            <span class="s0">case </span><span class="s6">0</span><span class="s1">:</span>
+                <span class="s0">return </span><span class="s6">0</span><span class="s2">;</span>
+            <span class="s0">default</span><span class="s1">:</span>
+                <span class="s1">System.out.println(</span><span class="s5">&quot;Некорректный выбор. Возврат в меню.&quot;</span><span class="s1">)</span><span class="s2">;</span>
+                <span class="s0">return </span><span class="s1">-</span><span class="s6">1</span><span class="s2">;</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Метод проверяет корректность введённого роста</span>
+     <span class="s3">* </span><span class="s4">@param </span><span class="s3">number - проверяемый рост</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">Пример: рост = 12 - 'Введите корректный рост человека'</span>
+     <span class="s3">* */</span>
+    <span class="s0">public int </span><span class="s1">height(</span><span class="s0">int </span><span class="s1">number) {</span>
+        <span class="s0">while </span><span class="s1">(number &lt; </span><span class="s6">140 </span><span class="s1">|| number &gt; </span><span class="s6">240</span><span class="s1">) {</span>
+            <span class="s1">System.out.println(</span><span class="s5">&quot;Введите корректный рост человека&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">number = scanner.nextInt()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">number</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Метод проверяет положительность числа</span>
+     <span class="s3">* </span><span class="s4">@param </span><span class="s3">number - проверяемое число</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">Пример: число = 0 - 'Введите положительное число от 1'</span>
+     <span class="s3">* */</span>
+    <span class="s0">public int </span><span class="s1">numberNum(</span><span class="s0">int </span><span class="s1">number) {</span>
+        <span class="s0">while </span><span class="s1">(number &lt; </span><span class="s6">1</span><span class="s1">) {</span>
+            <span class="s1">System.out.println(</span><span class="s5">&quot;Введите положительное число от 1&quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">number = scanner.nextInt()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">number</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Метод проверяет наличие цифр в строке</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">Пример: строка  = 020917даодшыралы - 'Есть цифры! Введите строку заново: '</span>
+     <span class="s3">* */</span>
+    <span class="s0">public </span><span class="s1">String stringWithoutNum() {</span>
+        <span class="s0">while </span><span class="s1">(</span><span class="s0">true</span><span class="s1">) {</span>
+            <span class="s1">String input = scanner.nextLine()</span><span class="s2">;</span>
+
+            <span class="s7">// Проверяем, есть ли в строке цифры</span>
+            <span class="s0">if </span><span class="s1">(!input.matches(</span><span class="s5">&quot;.*</span><span class="s0">\\</span><span class="s5">d.*&quot;</span><span class="s1">)) {</span>
+                <span class="s0">return </span><span class="s1">input</span><span class="s2">; </span><span class="s7">// возвращаем строку</span>
+            <span class="s1">} </span><span class="s0">else </span><span class="s1">{</span>
+                <span class="s1">System.out.println(</span><span class="s5">&quot;Есть цифры! Введите строку заново: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+        <span class="s1">}</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/**</span>
+     <span class="s3">* Метод проверяет корректность ввода роста</span>
+     <span class="s3">* </span><span class="s4">@return </span><span class="s3">Пример: рост = 12 - 'Некорректный рост . . . Введите корректный рост (140-230 см):'</span>
+     <span class="s3">* */</span>
+    <span class="s0">public int </span><span class="s1">validateHeight() {</span>
+        <span class="s0">int </span><span class="s1">height = scanner.nextInt()</span><span class="s2">;</span>
+        <span class="s0">while </span><span class="s1">(height &lt; </span><span class="s6">140 </span><span class="s1">|| height &gt; </span><span class="s6">230</span><span class="s1">) {</span>
+            <span class="s1">System.out.print(</span><span class="s5">&quot;Некорректный рост &quot; </span><span class="s1">+ height + </span><span class="s5">&quot;. Введите корректный рост (140-230 см): &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">height = scanner.nextInt()</span><span class="s2">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">height</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

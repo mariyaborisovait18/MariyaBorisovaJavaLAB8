@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Name.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #ed864a;}
+.s1 { color: #ebebeb;}
+.s2 { color: #ed864a; font-weight: bold;}
+.s3 { color: #7ec3e6;}
+.s4 { color: #54b33e;}
+.s5 { color: #499936; font-style: italic;}
+.s6 { color: #499936; font-weight: bold; font-style: italic;}
+.s7 { color: #33ccff; font-weight: bold;}
+</style>
+</head>
+<body bgcolor="#131314">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Name.java</font>
+</center></td></tr></table>
+<pre><span class="s0">import </span><span class="s1">java.util.Scanner</span><span class="s2">;</span>
+
+<span class="s0">public class </span><span class="s1">Name {</span>
+    <span class="s1">Scanner scanner = </span><span class="s0">new </span><span class="s1">Scanner(System.in)</span><span class="s2">;</span>
+    <span class="s1">GlobalVerification mistakeName = </span><span class="s0">new </span><span class="s1">GlobalVerification()</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String name</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String surname</span><span class="s2">;</span>
+    <span class="s0">private </span><span class="s1">String middleName</span><span class="s2">;</span>
+
+    <span class="s3">// конструктор задания 1</span>
+    <span class="s0">public </span><span class="s1">Name() {</span>
+        <span class="s1">System.out.print(</span><span class="s4">&quot;Введите имя: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.name = mistakeName.stringWithoutNum()</span><span class="s2">;</span>
+
+        <span class="s1">System.out.print(</span><span class="s4">&quot;Введите фамилию: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.surname = mistakeName.stringWithoutNum()</span><span class="s2">;</span>
+
+        <span class="s1">System.out.print(</span><span class="s4">&quot;Введите отчество: &quot;</span><span class="s1">)</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.middleName = mistakeName.stringWithoutNum()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Конструктор задания 4.5</span>
+    <span class="s3">// Конструктор только с личным именем</span>
+    <span class="s0">public </span><span class="s1">Name(String name) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.surname = </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.middleName = </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Конструктор задания 4.5</span>
+    <span class="s3">// Конструктор с личным именем и фамилией</span>
+    <span class="s0">public </span><span class="s1">Name(String name</span><span class="s2">, </span><span class="s1">String surname) {</span>
+        <span class="s0">this</span><span class="s1">.name = name</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.surname = surname</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.middleName = </span><span class="s4">&quot;&quot;</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Конструктор задания 4.5</span>
+    <span class="s3">// Конструктор со всеми тремя параметрами</span>
+    <span class="s0">public </span><span class="s1">Name(String name</span><span class="s2">, </span><span class="s1">String surname</span><span class="s2">, </span><span class="s1">String middleName) {</span>
+        <span class="s0">this</span><span class="s1">.name = mistakeName.stringWithoutNum()</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.surname = mistakeName.stringWithoutNum()</span><span class="s2">;</span>
+        <span class="s0">this</span><span class="s1">.middleName = middleName</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">// Инкапсуляция - без деления по конструкторам</span>
+    <span class="s0">public </span><span class="s1">String getName() {</span>
+        <span class="s0">return </span><span class="s1">name</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">String getSurname() {</span>
+        <span class="s0">return </span><span class="s1">surname</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public </span><span class="s1">String getMiddleName() {</span>
+        <span class="s0">return </span><span class="s1">middleName</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">setSurname(String surname) {</span>
+        <span class="s0">this</span><span class="s1">.surname = surname</span><span class="s2">;</span>
+    <span class="s1">}</span>
+    <span class="s0">public void </span><span class="s1">setMiddleName(String middleName) {</span>
+        <span class="s0">this</span><span class="s1">.middleName = middleName</span><span class="s2">;</span>
+    <span class="s1">}</span>
+
+    <span class="s5">/**</span>
+     <span class="s5">*  Метод вывода введённых данных</span>
+     <span class="s5">* </span><span class="s6">@return </span><span class="s5">Имя Фамилию и Отчество по наличию текущих</span>
+     <span class="s5">* */</span>
+    <span class="s1">@Override</span>
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        <span class="s1">StringBuilder result = </span><span class="s0">new </span><span class="s1">StringBuilder()</span><span class="s2">;</span>
+
+        <span class="s3">// Добавляем фамилию, если она не пустая</span>
+        <span class="s0">if </span><span class="s1">(surname != </span><span class="s0">null </span><span class="s1">&amp;&amp; !surname.trim().isEmpty()) {</span>
+            <span class="s1">result.append(surname)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s3">// Добавляем имя, если оно не пустое</span>
+        <span class="s0">if </span><span class="s1">(name != </span><span class="s0">null </span><span class="s1">&amp;&amp; !name.trim().isEmpty()) {</span>
+            <span class="s0">if </span><span class="s1">(result.length() &gt; </span><span class="s7">0</span><span class="s1">) {</span>
+                <span class="s1">result.append(</span><span class="s4">&quot; &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+            <span class="s1">result.append(name)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s3">// Добавляем отчество, если оно не пустое</span>
+        <span class="s0">if </span><span class="s1">(middleName != </span><span class="s0">null </span><span class="s1">&amp;&amp; !middleName.trim().isEmpty()) {</span>
+            <span class="s0">if </span><span class="s1">(result.length() &gt; </span><span class="s7">0</span><span class="s1">) {</span>
+                <span class="s1">result.append(</span><span class="s4">&quot; &quot;</span><span class="s1">)</span><span class="s2">;</span>
+            <span class="s1">}</span>
+            <span class="s1">result.append(middleName)</span><span class="s2">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">return </span><span class="s1">result.toString()</span><span class="s2">;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span></pre>
+</body>
+</html>
